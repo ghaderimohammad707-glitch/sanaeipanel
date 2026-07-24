@@ -1,0 +1,37 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "/app/logs/access.log",
+    "error": "/app/logs/error.log"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "dest": "www.google.com:443",
+          "serverNames": ["www.google.com"],
+          "privateKey": "",
+          "shortIds": [""]
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
+    }
+  ]
+}

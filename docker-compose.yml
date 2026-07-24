@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - DB_PATH=/app/data/sanayei.db
+      - PORT=8000
+      - API_PORT=8080
